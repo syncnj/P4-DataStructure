@@ -40,9 +40,9 @@ a)For random data, what are the rankings (from fastest to slowest) for the four
 data structures based on the mean time of building a tree, contains search, and range
 search?
 
-Build tree: ArrayList < RBTree < BSTree < BSTBalanced
-Contains: BSTreeBalanced< BSTree<RBTree< ArrayList
-Range: BSTree Balanced< BSTree < RBTree < ArrayList
+Build tree: ArrayList < RBTree <= BSTree < BSTBalanced
+Contains: BSTreeBalanced< BSTree<=RBTree< ArrayList
+Range: BSTree Balanced< BSTree <= RBTree < ArrayList
 
 
 b)What about for the sorted data?
@@ -50,7 +50,7 @@ b)What about for the sorted data?
 Answer:
 
 BuildTree: ArrayList <RBTree < BSTree < BalancedBST
-Contains:  BSTreeBalanced < RBTree < ArrayList < BSTree
+Contains:  BSTreeBalanced <= RBTree < ArrayList < BSTree
 Range: BSTreeBalanced < RBTree < ArrayList < BSTree
 
 
@@ -64,7 +64,13 @@ b)Which data structure has the largest growth rate function? Explain your answer
 of building tree, contains search and range search for random data and sorted data.
 
 Answer:
-
+ a. The ranking is still the same (similar).
+ b. Largest GRF:  Random:  Building tree: BalancedBST
+                           Contains: ArrayList
+                           Range: ArrayList
+                  Sorted:  Building: BSTBalanced
+                           Contains: ArrayList/BSTree
+                           Range: BSTree
 6) In this question you will run the program using the parameters 
 indicated below:
 
@@ -75,4 +81,6 @@ random_1000.txt 10 10 3
 Briefly explain how the rebalanceThreshold effects the time for building tree, contains search 
 and range search.
 
-Answer:
+Answer: Higher threshold will reduce the time it takes to build Balanced BSTree
+        contains: Smaller threshold will reduce the time to check contains.
+        Range: Small threshold will have less time to do range search.
