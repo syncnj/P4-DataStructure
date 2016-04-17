@@ -284,6 +284,11 @@ public class SetTesterMain {
 		long startTime = System.currentTimeMillis();
 		for (Integer elem: originalDataList){
 			ds.subSet(elem-10,elem+10);
+			//System.out.println("ELEM is:   !!!!!"+elem);
+			/*for (Integer elems: xxxxx){
+
+				System.out.println(elems);
+			}*/
 		}
 		return System.currentTimeMillis()-startTime;
 	}

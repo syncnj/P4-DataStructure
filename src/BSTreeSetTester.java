@@ -281,11 +281,13 @@ public class BSTreeSetTester <K extends Comparable<K>> implements SetTesterADT<K
      */
     public List<K> subSet(K minValue, K maxValue) {
         //TODO
-        if (minValue==null || maxValue==null || minValue.compareTo(maxValue)>0) {
+        if (minValue == null || maxValue == null || minValue.compareTo(maxValue) > 0) {
             throw new IllegalArgumentException("null input");
         }
         List<K> returnList = new ArrayList<>();
-        Iterator<K> itr = this.iterator();
+        subSetHelper(minValue,maxValue,returnList,root);
+        return returnList;
+       /*  Iterator<K> itr = this.iterator();
         while (itr.hasNext()){
             K key = itr.next();
             if ((key.compareTo(minValue)>=0) && key.compareTo(maxValue)<0){
@@ -293,8 +295,24 @@ public class BSTreeSetTester <K extends Comparable<K>> implements SetTesterADT<K
             }
         }
 
-        return returnList;
+        return returnList;*/
     }
+        private void subSetHelper (K minValue, K maxValue, List<K> returnList, BSTNode<K> node){
+            if (node == null) return;
+
+            if (node.getKey().compareTo(minValue)>=0){
+                subSetHelper(minValue, maxValue,returnList,node.getLeftChild());
+            }
+            if (node.getKey().compareTo(maxValue)<0) {
+                returnList.add(node.getKey());
+                subSetHelper(minValue, maxValue,returnList,node.getRightChild());
+            }
+
+
+    }
+
+
+
 
     /**
      * Return an iterator for the binary search tree.
