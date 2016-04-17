@@ -11,11 +11,11 @@
 //
 //////////////////// PAIR PROGRAMMERS COMPLETE THIS SECTION ////////////////////
 //
-// Pair Partner:     (name of your pair programming partner)
-// Email:            (email address of your programming partner)
-// CS Login:         (partner's login name)
-// Lecturer's Name:  (name of your partner's lecturer)
-// Lab Section:      (your partner's lab section number)
+// Pair Partner:     Yuchen Gu
+// Email:            ygu48@wisc.edu
+// CS Login:         yuchen
+// Lecturer's Name:  Jim Skrentny
+// Lab Section:      N/A
 //
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -42,8 +42,7 @@ public class BSTIterator<K> implements Iterator<K> {
     public BSTIterator(BSTNode<K> n){
         //TODO
         stack = new Stack<>();
-        // if (n==null) throw new IllegalArgumentException("root node is null!");
-        BSTNode curr= n;
+        BSTNode<K> curr= n;
         while (curr!=null){
             stack.push(curr);
             curr = curr.getLeftChild();
@@ -57,7 +56,6 @@ public class BSTIterator<K> implements Iterator<K> {
      */
     public boolean hasNext() {
         //TODO
-        // Untested!!!!
         return !stack.isEmpty();
     }
 

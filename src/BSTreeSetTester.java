@@ -1,3 +1,22 @@
+//////////////////////////////////////////////////////////////////////////////
+//                   ALL STUDENTS COMPLETE THESE SECTIONS
+// Main Class File:  SetTesterMain.java
+// File:             BSTreeSetTester.java
+// Semester:         CS367 Spring 2016
+//
+// Author:           Yi Shen yshen59@wisc.edu
+// CS Login:         sheny
+// Lecturer's Name:  Jim Skrentny
+// Lab Section:      N/A
+//
+//////////////////// PAIR PROGRAMMERS COMPLETE THIS SECTION ////////////////////
+//
+// Pair Partner:     Yuchen Gu
+// Email:            ygu48@wisc.edu
+// CS Login:         yuchen
+// Lecturer's Name:  Jim Skrentny
+// Lab Section:      N/A
+//
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
