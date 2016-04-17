@@ -1,3 +1,33 @@
+///////////////////////////////////////////////////////////////////////////////
+//                   ALL STUDENTS COMPLETE THESE SECTIONS
+// Title:            P4-DataStructure
+// Files:			 ArrayListSetTester.java; BSTIterator.java; BSTNode.java; BSTreeSetTester.java;
+//					 DuplicateKeyException; RBTreeSetTester; SetTesterADT; SetTesterMain.java; Stats.java
+// Semester:         CS367 Spring 2016
+//
+// Author:           Yi Shen
+// Email:            yshen59@wisc.edu
+// CS Login:         (your login name)
+// Lecturer's Name:  (name of your lecturer)
+// Lab Section:      (your lab section number)
+//
+//////////////////// PAIR PROGRAMMERS COMPLETE THIS SECTION ////////////////////
+//
+//                   CHECK ASSIGNMENT PAGE TO see IF PAIR-PROGRAMMING IS ALLOWED
+//                   If pair programming is allowed:
+//                   1. Read PAIR-PROGRAMMING policy (in cs302 policy)
+//                   2. choose a partner wisely
+//                   3. REGISTER THE TEAM BEFORE YOU WORK TOGETHER
+//                      a. one partner creates the team
+//                      b. the other partner must join the team
+//                   4. complete this section for each program file.
+//
+// Pair Partner:     (name of your pair programming partner)
+// Email:            (email address of your programming partner)
+// CS Login:         (partner's login name)
+// Lecturer's Name:  (name of your partner's lecturer)
+// Lab Section:      (your partner's lab section number)
+//
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -237,7 +267,7 @@ public class SetTesterMain {
 		//TODO
 		long startTime = System.currentTimeMillis();
 		for (Integer elem: originalDataList){
-			ds.contains(elem);
+			if (!ds.contains(elem)) throw new RuntimeException("data not found!");
 		}
 		return System.currentTimeMillis()-startTime;
 	}
