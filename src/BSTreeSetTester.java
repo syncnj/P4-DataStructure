@@ -86,23 +86,23 @@ public class BSTreeSetTester <K extends Comparable<K>> implements SetTesterADT<K
         if (key==null) throw new IllegalArgumentException("cannot add null key");
         if (root ==null){
             root = new BSTNode<>(key);
-            //root.setHeight(1);
-            //root.setBalanceFactor(0);
         }
         else {
             addHelper(root,key);
         }
 
-        numKeys++;
+        numKeys++;  //update the total count
 
         if (this.rebalanceThreshold<=0){
             this.isBalanced=true;
         }
         else{
             this.isBalanced=true;
+            //set it to balanced before checking
             checkBalance(root);
             if(!isBalanced){
                 rebalance();
+                //rebalance if needed
             }
         }
 
@@ -110,11 +110,13 @@ public class BSTreeSetTester <K extends Comparable<K>> implements SetTesterADT<K
     }
 
     private void  addHelper (BSTNode<K> node, K key){
-        //int newHeight;
+        //child height is 0 if the child node is null
         int leftHeight =0;
         int rightHeight =0;
+
         if (key.compareTo(node.getKey())>0){
             if (node.getRightChild()==null){
+                //Base case: it's already the end
                 node.setRightChild(new BSTNode<K>(key));
             }
             else {
