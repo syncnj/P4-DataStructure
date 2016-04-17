@@ -108,7 +108,13 @@ public class BSTreeSetTester <K extends Comparable<K>> implements SetTesterADT<K
 
 
     }
-
+    /**
+     * helper method for add, used recursively to traverse to the node and add it
+     *
+     * @param (node) (the root node of the tree to add the key to)
+     * @param (key) (the key to add to the tree)
+     *
+     */
     private void  addHelper (BSTNode<K> node, K key){
         //child height is 0 if the child node is null
         int leftHeight =0;
@@ -120,17 +126,17 @@ public class BSTreeSetTester <K extends Comparable<K>> implements SetTesterADT<K
                 node.setRightChild(new BSTNode<K>(key));
             }
             else {
+                //Keep traverse to the child node
                 addHelper(node.getRightChild(),key);
             }
-            //update height / balanced factor
 
+            //update height & balanced factor of the new node
             if (node.getLeftChild()!=null){
                 leftHeight = node.getLeftChild().getHeight();
             }
             if (node.getRightChild()!=null){
                 rightHeight = node.getRightChild().getHeight();
             }
-
             node.setHeight(1+Math.max(leftHeight,rightHeight));
             node.setBalanceFactor(leftHeight-rightHeight);
 
@@ -144,6 +150,7 @@ public class BSTreeSetTester <K extends Comparable<K>> implements SetTesterADT<K
                 addHelper(node.getLeftChild(),key);
             }
 
+            //update height & balanceFactor
             if (node.getLeftChild()!=null){
                 leftHeight = node.getLeftChild().getHeight();
             }
@@ -155,19 +162,25 @@ public class BSTreeSetTester <K extends Comparable<K>> implements SetTesterADT<K
 
         }
         else {
+            //Same node exist
             throw new DuplicateKeyException();
         }
     }
 
+    /**
+     * Recursive method to check if each node is balanced
+     *
+     * @param (n) (The root node of each recursive call to check if balanced)
+     */
     private void checkBalance(BSTNode<K> n){
+        //traversed to the end of the tree
         if (n==null) return;
 
         if (Math.abs(n.getBalanceFactor())>rebalanceThreshold)
         {
             this.isBalanced=false;
         }
-
-
+        //Keep checking only if it's still balanced
         if (this.isBalanced) {
             checkBalance(n.getLeftChild());
             checkBalance(n.getRightChild());
@@ -186,6 +199,7 @@ public class BSTreeSetTester <K extends Comparable<K>> implements SetTesterADT<K
     public void rebalance() {
         K[] keys = (K[]) new Comparable[numKeys];
         //TODO
+        //Put everything in the array
         Iterator<K> itr = this.iterator();
         int i=0;
         while (itr.hasNext()){
@@ -193,7 +207,6 @@ public class BSTreeSetTester <K extends Comparable<K>> implements SetTesterADT<K
             i++;
         }
 
-        //root = new BSTNode<>(keys[numKeys/2]);
         root = sortedArrayToBST(keys, 0, numKeys-1);
 
     }
@@ -217,19 +230,18 @@ public class BSTreeSetTester <K extends Comparable<K>> implements SetTesterADT<K
             return new BSTNode<>(keys[start]);
         }
         if (start>stop) return null;
+
         int leftHeight =0;
         int rightHeight =0;
 
-
+        //create new node
         int mid = (start+stop)/2;
         BSTNode<K> newNode = new BSTNode<K>(keys[mid]);
-
-
-
 
         newNode.setLeftChild(sortedArrayToBST(keys,start,mid-1));
         newNode.setRightChild(sortedArrayToBST(keys,mid+1,stop));
 
+        //update the child height
         if (newNode.getLeftChild()!=null){
             leftHeight = newNode.getLeftChild().getHeight();
         }
@@ -237,6 +249,7 @@ public class BSTreeSetTester <K extends Comparable<K>> implements SetTesterADT<K
             rightHeight = newNode.getRightChild().getHeight();
         }
 
+        //set the height & BalanceFactor
         newNode.setHeight(1+Math.max(leftHeight,rightHeight));
         newNode.setBalanceFactor(leftHeight-rightHeight);
 
@@ -257,6 +270,15 @@ public class BSTreeSetTester <K extends Comparable<K>> implements SetTesterADT<K
 
     }
 
+
+
+    /**
+     * Helper method for contains, call itself recursively
+     *
+     * @param key the key to search.
+     * @param node the current node in the recursive call
+     * @return true if the the current key is in the tree
+     */
     private boolean containsHelper(K key, BSTNode<K> node){
         if (node == null) return false;
         if (key.compareTo(node.getKey())>0){
@@ -266,6 +288,7 @@ public class BSTreeSetTester <K extends Comparable<K>> implements SetTesterADT<K
             return containsHelper(key,node.getLeftChild());
         }
         else {
+            // Same node exists
             return true;
         }
     }
@@ -288,22 +311,27 @@ public class BSTreeSetTester <K extends Comparable<K>> implements SetTesterADT<K
         List<K> returnList = new ArrayList<>();
         subSetHelper(minValue,maxValue,returnList,root);
         return returnList;
-       /*  Iterator<K> itr = this.iterator();
-        while (itr.hasNext()){
-            K key = itr.next();
-            if ((key.compareTo(minValue)>=0) && key.compareTo(maxValue)<0){
-                returnList.add(key);
-            }
-        }
 
-        return returnList;*/
     }
-        private void subSetHelper (K minValue, K maxValue, List<K> returnList, BSTNode<K> node){
+
+    /**
+     * Returns the sorted list of keys in the tree that are in the specified
+     * range (inclusive of minValue, exclusive of maxValue).
+     *
+     * @param minValue the minimum value of the desired range (inclusive)
+     * @param maxValue the maximum value of the desired range (exclusive)
+     * @param returnList the list to be created and returened
+     * @param node the current node to be traversed
+     */
+    private void subSetHelper (K minValue, K maxValue, List<K> returnList, BSTNode<K> node){
+            //Use in order traversal
             if (node == null) return;
 
+            //check the node on the left child
             if (node.getKey().compareTo(minValue)>=0){
                 subSetHelper(minValue, maxValue,returnList,node.getLeftChild());
             }
+            // visit  the node and check the node on the right side
             if (node.getKey().compareTo(maxValue)<0) {
                 returnList.add(node.getKey());
                 subSetHelper(minValue, maxValue,returnList,node.getRightChild());
@@ -320,16 +348,13 @@ public class BSTreeSetTester <K extends Comparable<K>> implements SetTesterADT<K
      * @return the iterator
      */
     public Iterator<K> iterator() {
-        //TODO
         return new BSTIterator<>(root);
-        //return null;
     }
 
     /**
      * Clears the tree, i.e., removes all the keys in the tree.
      */
     public void clear() {
-        //TODO
         root =null;
         numKeys=0;
         isBalanced=true;
@@ -341,7 +366,6 @@ public class BSTreeSetTester <K extends Comparable<K>> implements SetTesterADT<K
      * @return the number of keys
      */
     public int size() {
-        //TODO
         return numKeys;
     }
 
