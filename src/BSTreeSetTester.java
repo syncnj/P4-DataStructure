@@ -97,60 +97,40 @@ public class BSTreeSetTester <K extends Comparable<K>> implements SetTesterADT<K
         if (key.compareTo(node.getKey())>0){
             if (node.getRightChild()==null){
                 node.setRightChild(new BSTNode<K>(key));
-
-
-                if (node.getLeftChild()!=null){
-                    leftHeight = node.getLeftChild().getHeight();
-                }
-                if (node.getRightChild()!=null){
-                    rightHeight = node.getRightChild().getHeight();
-                }
-                node.setHeight(1+Math.max(leftHeight,rightHeight));
-                node.setBalanceFactor(leftHeight-rightHeight);
-                //return 1;
             }
             else {
                 addHelper(node.getRightChild(),key);
-                if (node.getLeftChild()!=null){
-                    leftHeight = node.getLeftChild().getHeight();
-                }
-                if (node.getRightChild()!=null){
-                    rightHeight = node.getRightChild().getHeight();
-                }
-
-                node.setHeight(1+Math.max(leftHeight,rightHeight));
-                //System.out.println("L:"+leftHeight + ", R:"+rightHeight+ "newHeight: "+ node.getHeight());
-                node.setBalanceFactor(leftHeight-rightHeight);
             }
+            //update height / balanced factor
+
+            if (node.getLeftChild()!=null){
+                leftHeight = node.getLeftChild().getHeight();
+            }
+            if (node.getRightChild()!=null){
+                rightHeight = node.getRightChild().getHeight();
+            }
+
+            node.setHeight(1+Math.max(leftHeight,rightHeight));
+            node.setBalanceFactor(leftHeight-rightHeight);
+
+
         }
         else if (key.compareTo(node.getKey())<0){
             if (node.getLeftChild()==null){
                 node.setLeftChild(new BSTNode<K>(key));
-
-
-                if (node.getLeftChild()!=null){
-                    leftHeight = node.getLeftChild().getHeight();
-                }
-                if (node.getRightChild()!=null){
-                    rightHeight = node.getRightChild().getHeight();
-                }
-                node.setHeight(1+Math.max(leftHeight,rightHeight));
-                node.setBalanceFactor(leftHeight-rightHeight);
-
-
             }
             else {
                 addHelper(node.getLeftChild(),key);
-                if (node.getLeftChild()!=null){
-                    leftHeight = node.getLeftChild().getHeight();
-                }
-                if (node.getRightChild()!=null){
-                    rightHeight = node.getRightChild().getHeight();
-                }
-                node.setHeight(1+Math.max(leftHeight,rightHeight));
-                //System.out.println("L:"+leftHeight + ", R:"+rightHeight+ "newHeight: "+ node.getHeight());
-                node.setBalanceFactor(leftHeight-rightHeight);
             }
+
+            if (node.getLeftChild()!=null){
+                leftHeight = node.getLeftChild().getHeight();
+            }
+            if (node.getRightChild()!=null){
+                rightHeight = node.getRightChild().getHeight();
+            }
+            node.setHeight(1+Math.max(leftHeight,rightHeight));
+            node.setBalanceFactor(leftHeight-rightHeight);
 
         }
         else {

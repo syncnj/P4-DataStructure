@@ -1,3 +1,22 @@
+///////////////////////////////////////////////////////////////////////////////
+//                   ALL STUDENTS COMPLETE THESE SECTIONS
+// Main Class File:  SetTesterMain.java
+// File:             BSTIterator.java
+// Semester:         CS367 Spring 2016
+//
+// Author:           Yi Shen yshen59@wisc.edu
+// CS Login:         sheny
+// Lecturer's Name:  Jim Skrentny
+// Lab Section:      N/A
+//
+//////////////////// PAIR PROGRAMMERS COMPLETE THIS SECTION ////////////////////
+//
+// Pair Partner:     (name of your pair programming partner)
+// Email:            (email address of your programming partner)
+// CS Login:         (partner's login name)
+// Lecturer's Name:  (name of your partner's lecturer)
+// Lab Section:      (your partner's lab section number)
+//
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Stack;

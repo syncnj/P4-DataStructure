@@ -7,9 +7,9 @@
 //
 // Author:           Yi Shen
 // Email:            yshen59@wisc.edu
-// CS Login:         (your login name)
-// Lecturer's Name:  (name of your lecturer)
-// Lab Section:      (your lab section number)
+// CS Login:         sheny
+// Lecturer's Name:  Jim Skrentny
+// Lab Section:      N/A
 //
 //////////////////// PAIR PROGRAMMERS COMPLETE THIS SECTION ////////////////////
 //
@@ -22,11 +22,11 @@
 //                      b. the other partner must join the team
 //                   4. complete this section for each program file.
 //
-// Pair Partner:     (name of your pair programming partner)
-// Email:            (email address of your programming partner)
-// CS Login:         (partner's login name)
-// Lecturer's Name:  (name of your partner's lecturer)
-// Lab Section:      (your partner's lab section number)
+// Pair Partner:     Yuchen Gu
+// Email:            ygu48@wisc.edu
+// CS Login:         yuchen
+// Lecturer's Name:  Jim Skrentny
+// Lab Section:      N/A
 //
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -264,7 +264,6 @@ public class SetTesterMain {
 	 * @throws RuntimeException if a data item is not found in the SetTester
 	 */
 	public long evaluateContainsSearch(SetTesterADT<Integer> ds) {
-		//TODO
 		long startTime = System.currentTimeMillis();
 		for (Integer elem: originalDataList){
 			if (!ds.contains(elem)) throw new RuntimeException("data not found!");
@@ -280,15 +279,9 @@ public class SetTesterMain {
 	 * @return the time (milliseconds) for range search
 	 */
 	public long evaluateRangeSearch(SetTesterADT<Integer> ds) {
-		//TODO
 		long startTime = System.currentTimeMillis();
 		for (Integer elem: originalDataList){
 			ds.subSet(elem-10,elem+10);
-			//System.out.println("ELEM is:   !!!!!"+elem);
-			/*for (Integer elems: xxxxx){
-
-				System.out.println(elems);
-			}*/
 		}
 		return System.currentTimeMillis()-startTime;
 	}
