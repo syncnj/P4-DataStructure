@@ -27,7 +27,7 @@ ArrayList, Binary Search Tree, Binary Search Tree with a small positive
 rebalance factor(e.g 2) and RBTree? Assume the range is small. Assume the result of
 range search contains K elements.
 
-Answer: ArrayList: O(NlogN). BST: O(N).  BST balanced: O(logN). RBTree: O(logN)
+Answer: ArrayList: O(N). BST: O(N).  BST balanced: O(logN). RBTree: O(logN)
 
 For questions 4 - 6, you should use the Evaluator program as written.
 
@@ -40,8 +40,8 @@ a)For random data, what are the rankings (from fastest to slowest) for the four
 data structures based on the mean time of building a tree, contains search, and range
 search?
 
-Build tree: ArrayList < RBTree <= BSTree < BSTBalanced
-Contains: BSTreeBalanced< BSTree<=RBTree< ArrayList
+Build tree: ArrayList < RBTree ~= BSTree < BSTBalanced
+Contains: BSTreeBalanced< BSTree~=RBTree< ArrayList
 Range: BSTree Balanced< BSTree <= RBTree < ArrayList
 
 
