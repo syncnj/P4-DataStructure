@@ -40,7 +40,6 @@ public class BSTIterator<K> implements Iterator<K> {
      * @param n the root node of the BST
      */
     public BSTIterator(BSTNode<K> n){
-        //TODO
         stack = new Stack<>();
         BSTNode<K> curr= n;
         while (curr!=null){
@@ -55,7 +54,6 @@ public class BSTIterator<K> implements Iterator<K> {
      * @return true iff the iterator has more items
      */
     public boolean hasNext() {
-        //TODO
         return !stack.isEmpty();
     }
 
@@ -66,7 +64,6 @@ public class BSTIterator<K> implements Iterator<K> {
      * @throws NoSuchElementException if the iterator has no more items
      */
     public K next() {
-        //TODO
         if (!this.hasNext()){
             throw new NoSuchElementException("iterator has traversed to its end");
         }

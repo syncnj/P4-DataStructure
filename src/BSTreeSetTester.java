@@ -65,7 +65,6 @@ public class BSTreeSetTester <K extends Comparable<K>> implements SetTesterADT<K
      * @param rbt the rebalance threshold
      */
     public BSTreeSetTester(int rbt) {
-        //TODO
         rebalanceThreshold = rbt;
         numKeys=0;
         isBalanced=true;
@@ -82,7 +81,6 @@ public class BSTreeSetTester <K extends Comparable<K>> implements SetTesterADT<K
      * @throws DuplicateKeyException if the key is a duplicate
      */
     public void add(K key) {
-        //TODO
         if (key==null) throw new IllegalArgumentException("cannot add null key");
         if (root ==null){
             root = new BSTNode<>(key);
@@ -198,7 +196,6 @@ public class BSTreeSetTester <K extends Comparable<K>> implements SetTesterADT<K
      */
     public void rebalance() {
         K[] keys = (K[]) new Comparable[numKeys];
-        //TODO
         //Put everything in the array
         Iterator<K> itr = this.iterator();
         int i=0;
@@ -225,7 +222,6 @@ public class BSTreeSetTester <K extends Comparable<K>> implements SetTesterADT<K
      * @return root of the new balanced binary search tree
      */
     private BSTNode<K> sortedArrayToBST(K[] keys, int start, int stop) {
-        //TODO
         if (start == stop){
             return new BSTNode<>(keys[start]);
         }
@@ -264,7 +260,6 @@ public class BSTreeSetTester <K extends Comparable<K>> implements SetTesterADT<K
      * @throws IllegalArgumentException if key is null
      */
     public boolean contains(K key) {
-        //TODO
         if (key == null) throw new IllegalArgumentException("key is null");
         return containsHelper(key, root);
 
@@ -304,7 +299,6 @@ public class BSTreeSetTester <K extends Comparable<K>> implements SetTesterADT<K
      * null, or minValue is larger than maxValue
      */
     public List<K> subSet(K minValue, K maxValue) {
-        //TODO
         if (minValue == null || maxValue == null || minValue.compareTo(maxValue) > 0) {
             throw new IllegalArgumentException("null input");
         }
